@@ -15,7 +15,7 @@ import noteAPI from '../API/note';
 import Address from './Address'
 import MoMo from './MoMo'
 
-const socket = io('http://localhost:8000/', {
+const socket = io('https://hieusuper20hcm.herokuapp.com/', {
     transports: ['websocket'], jsonp: false
 });
 socket.connect();
