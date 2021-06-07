@@ -11,7 +11,7 @@ function MoMo(props) {
         const serectkey = "VBjplO0Y9Wa9p2cCDgsl1CToQYIOEZGk"
         const orderInfo = "Thanh toán MoMo"
         const notifyurl = "https://hieusuper20hcm.herokuapp.com/api/payment/momo"
-        const returnUrl = window.location.hostname + "/momo"
+        const returnUrl = "/momo"
         const amount = "50000"
         const orderId = props.orderID
         const requestType = "captureMoMoWallet"
