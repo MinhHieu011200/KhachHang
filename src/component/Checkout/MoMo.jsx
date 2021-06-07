@@ -5,7 +5,7 @@ import crypto from 'crypto'
 function MoMo(props) {
     const [error, setError] = useState(false)
     useEffect(() => {
-        const path = "/gw_payment/transactionProcessor"
+        const path = "https://test-payment.momo.vn/gw_payment/transactionProcessor"
         const partnerCode = "MOMOE9WJ20210526"
         const accessKey = "KwWWd8aJMfHmjv64"
         const serectkey = "VBjplO0Y9Wa9p2cCDgsl1CToQYIOEZGk"
