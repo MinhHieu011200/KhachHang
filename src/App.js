@@ -133,7 +133,7 @@ function App() {
                 <Route exact path='/order' component={MainHistory} />
                 <Route exact path='/order/:id' component={DetailHistory} />
 
-                <Route path='/momo' component={MoMo} />
+                <Route exact path='/momo' component={MoMo} />
               </Switch>
               <Footer />
             </Suspense>
