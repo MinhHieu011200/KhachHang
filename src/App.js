@@ -43,6 +43,18 @@ const Shop = lazy(() => {
   });
 });
 
+const Event = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(import("./component/Event/Event")), 1000);
+  });
+});
+
+const DetailEvent = lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(import("./component/Event/DetailEvent")), 1000);
+  });
+});
+
 const Cart = lazy(() => {
   return new Promise(resolve => {
     setTimeout(() => resolve(import("./component/Cart/Cart")), 1000);
@@ -51,7 +63,7 @@ const Cart = lazy(() => {
 
 const Detail_Product = lazy(() => {
   return new Promise(resolve => {
-    setTimeout(() => resolve(import("./component/Detail_Product/Detail_Product")), 2500);
+    setTimeout(() => resolve(import("./component/Detail_Product/Detail_Product")), 1000);
   });
 });
 
@@ -113,6 +125,9 @@ function App() {
               <Switch>
                 <Route exact path="/" component={Home} />
 
+                <Route exact path="/event" component={Event} />
+                <Route exact path="/event/:id" component={DetailEvent} />
+
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/forget" component={Forget} />
@@ -134,6 +149,7 @@ function App() {
                 <Route exact path='/order/:id' component={DetailHistory} />
 
                 <Route exact path='/momo' component={MoMo} />
+                <Route exact path='/momo/notify' component={MoMo} />
               </Switch>
               <Footer />
             </Suspense>

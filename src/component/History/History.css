@@ -1,5 +1,4 @@
-
-.bg_status_delivery{
+.bg_status_delivery {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -7,7 +6,7 @@
     z-index: 999;
 }
 
-.bg_status_delivery_active{
+.bg_status_delivery_active {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -15,25 +14,25 @@
     z-index: 999;
 }
 
-.a_status_delivery{
+.a_status_delivery {
     font-size: 1.1rem;
 }
 
-.group_status_delivery{
+.group_status_delivery {
     width: 70%;
 }
 
-.hr_status_delivery{
+.hr_status_delivery {
     width: 70%;
     height: 1.2px;
     background-color: rgb(194, 194, 194);
 }
 
-.group_box_status{
+.group_box_status {
     position: relative;
 }
 
-.test_status{
+.test_status {
     position: absolute;
     top: .5rem;
     left: 0;

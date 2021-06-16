@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import producerAPI from '../API/producer'
+import Slider from './Sliders'
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 function Home(props) {
+    const [producer, setProducer] = useState([])
+
+    useEffect(() => {
+        const fetchAllData = async () => {
+            const res = await producerAPI.getAPI()
+            setProducer(res)
+        }
+
+        fetchAllData()
+    }, [])
+
+
     return (
         <div className="container">
             <div className="slider-with-banner">
@@ -32,7 +47,39 @@ function Home(props) {
                     </div>
                 </div>
             </div>
+
+            <Slider producer="Sale" id="" />
+
+            <div className="li-static-banner">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-4 col-md-4 text-center">
+                            <div className="single-banner">
+                                <img src="https://image.freepik.com/free-vector/fashion-banner-design-with-shirt-bag-camera-case_83728-1865.jpg" alt="Li's Static Banner" />
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-4 text-center pt-xs-30">
+                            <div className="single-banner">
+                                <img src="https://image.freepik.com/free-vector/fashion-sale-banner-collection_23-2148161688.jpg" alt="Li's Static Banner" />
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-4 text-center pt-xs-30">
+                            <div className="single-banner">
+                                <img src="https://image.freepik.com/free-vector/fashion-sale-banners_52683-11557.jpg" alt="Li's Static Banner" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {
+                producer && producer.map((item, index) =>
+                (
+                    <Slider producer={item.producer} key={index._id} id={item._id} />
+                ))
+            }
+
         </div >
+
     );
 }
 

@@ -54,7 +54,7 @@ function Profile(props) {
         const isValid = validateAll();
         if (!isValid) return
 
-        const query = '?' + queryString.stringify({ fullname: name, id: user._id })
+        const query = '?' + queryString.stringify({ name: name, id: user._id })
 
         const response = await userAPI.update(query)
         if (response.msg === "Bạn đã update thành công") {

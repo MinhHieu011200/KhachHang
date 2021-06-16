@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import crypto from 'crypto'
+
+import io from "socket.io-client";
+
 import orderAPI from '../API/order';
+
+const socket = io(process.env.REACT_APP_API, {
+    transports: ['websocket'], jsonp: false
+});
+socket.connect();
 
 function MoMo(props) {
     const { search } = window.location;
@@ -9,7 +17,7 @@ function MoMo(props) {
     useEffect(() => {
 
         const fetchData = async () => {
-            const serectkey = "VBjplO0Y9Wa9p2cCDgsl1CToQYIOEZGk"
+            const serectkey = process.env.REACT_APP_SECRET_KEY
             const accessKey = new URLSearchParams(search).get('accessKey')
             const amount = new URLSearchParams(search).get('amount')
             const extraData = new URLSearchParams(search).get('extraData')
@@ -31,31 +39,38 @@ function MoMo(props) {
                 .update(param)
                 .digest('hex');
 
+            console.log(signature)
             if (new URLSearchParams(search).get('signature') !== signature) {
                 setNote("Thông tin request không hợp lệ")
                 return;
             }
+            var body = {
+                partnerCode: partnerCode,
+                accessKey: accessKey,
+                requestId: orderId,
+                amount: amount,
+                orderId: orderId,
+                orderInfo: orderInfo,
+                orderType: orderType,
+                transId: transId,
+                message: message,
+                localMessage: localMessage,
+                responseTime: responseTime,
+                errorCode: errorCode,
+                payType: payType,
+                extraData: extraData,
+                signature: signature
+            }
             if (errorCode == 0) {
-                // var body = {
-                //     partnerCode: partnerCode,
-                //     accessKey: accessKey,
-                //     requestId: orderId,
-                //     amount: amount,
-                //     orderId: orderId,
-                //     orderInfo: orderInfo,
-                //     orderType: orderType,
-                //     transId: transId,
-                //     message: message,
-                //     localMessage: localMessage,
-                //     responseTime: responseTime,
-                //     errorCode: errorCode,
-                //     payType: payType,
-                //     extraData: extraData,
-                //     signature: signature
-                // }
-                // const response = await orderAPI.momo(body)
+                const response = await orderAPI.momo(body)
+                if (response === "Thanh Cong") {
+                    socket.emit('send_order', "Có người vừa đặt hàng")
+                }
+
                 setNote("Thanh toán thành công")
             } else {
+                const response = await orderAPI.momo(body)
+                console.log(response)
                 setNote("Thanh toán thất bại")
             }
 

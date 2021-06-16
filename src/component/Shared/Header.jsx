@@ -111,13 +111,6 @@ function Header() {
 
                             <div className="header-middle-right">
                                 <ul className="hm-menu">
-                                    {/* Begin Header Middle Wishlist Area */}
-                                    <li className="hm-wishlist">
-                                        <a href="wishlist.html">
-                                            <span className="cart-item-count wishlist-item-count">0</span>
-                                            <i className="fa fa-heart-o" />
-                                        </a>
-                                    </li>
                                     {/* Header Middle Wishlist Area End Here */}
                                     {/* Begin Header Mini Cart Area */}
 
@@ -149,7 +142,7 @@ function Header() {
                                                     ))
                                                 }
                                             </ul>
-                                            <p className="minicart-total">SUBTOTAL: <span>{new Intl.NumberFormat('vi-VN', { style: 'decimal', decimal: 'VND' }).format(sumPrice) + 'đ'}</span></p>
+                                            <p className="minicart-total">SUBTOTAL: <span>{new Intl.NumberFormat('vi-VN', { style: 'decimal', decimal: 'VND' }).format(sumPrice) + ' Đ'}</span></p>
                                             <div className="minicart-button">
                                                 <Link to="/cart" className="li-button li-button-fullwidth">
                                                     <span>View Full Cart</span>
@@ -199,8 +192,7 @@ function Header() {
                                             </ul>
                                         </li>
 
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><Link to="/event">Event</Link></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -214,7 +206,36 @@ function Header() {
             <div className="mobile-menu-area d-lg-none d-xl-none col-12">
                 <div className="container">
                     <div className="row">
-                        <div className="mobile-menu">
+                        <div className="mobile-menu mean-container">
+                            <div className="mean-bar">
+                                <a className="meanmenu-reveal collapse" data-toggle="collapse" data-target="#nav" aria-expanded="false" aria-controls="nav" ><span /><span /><span /></a>
+                                <nav id="nav" className="mean-nav collapse">
+                                    <ul>
+                                        <li><Link to="/">Home</Link></li>
+                                        <li className="dropdown-holder"><Link to="/shop">Shop</Link>
+                                            <a className="mean-expand collapse" data-toggle="collapse" data-target="#shop" aria-expanded="false" aria-controls="shop" style={{ fontSize: '18px', cursor: 'pointer' }}>+</a>
+                                            <ul id="shop" className="hb-dropdown collapse">
+                                                {
+                                                    menu && menu.map((item, index) =>
+                                                    (
+                                                        <li className="sub-dropdown-holder" key={index}>
+                                                            <NavLink to={"/shop/" + item.producer.toLowerCase()} className="sidebar-link">
+                                                                {item.producer}
+                                                            </NavLink>
+                                                        </li>
+
+                                                    ))
+                                                }
+
+
+                                            </ul>
+
+                                        </li>
+                                        <li><Link to="/event">Event</Link></li>
+
+                                    </ul>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>

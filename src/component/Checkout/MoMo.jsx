@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import crypto from 'crypto'
+import { v4 as uuidv4 } from 'uuid';
+
 
 function MoMo(props) {
     const [error, setError] = useState(false)
     useEffect(() => {
         const path = "https://test-payment.momo.vn/gw_payment/transactionProcessor"
-        const partnerCode = "MOMOE9WJ20210526"
-        const accessKey = "KwWWd8aJMfHmjv64"
-        const serectkey = "VBjplO0Y9Wa9p2cCDgsl1CToQYIOEZGk"
+        const partnerCode = process.env.REACT_APP_PARTNER_CODE
+        const accessKey = process.env.REACT_APP_ACCESS_KEY
+        const serectkey = process.env.REACT_APP_SECRET_KEY
         const orderInfo = "Thanh toán MoMo"
-        const notifyurl = "https://hieusuper20hcm.herokuapp.com/api/payment/momo"
-        const returnUrl = "https://hieusuper20hcm.netlify.app/momo"
-        const amount = "50000"
-        const orderId = props.orderID
+        const notifyurl = process.env.REACT_APP_API + "/api/payment/momo"
+        const returnUrl = "http://localhost:3000/momo"
+        const amount = props.total.toString()
+        const orderId = uuidv4();
         const requestType = "captureMoMoWallet"
-        const extraData = "merchantName=Payment"
+        const extraData = props.extraData
         const rawSignature = `partnerCode=${partnerCode}&accessKey=${accessKey}&requestId=${orderId}&amount=${amount}&orderId=${orderId}&orderInfo=${orderInfo}&returnUrl=${returnUrl}&notifyUrl=${notifyurl}&extraData=${extraData}`
 
         var signature = crypto.createHmac('sha256', serectkey)
@@ -37,12 +39,14 @@ function MoMo(props) {
         })
         axios.post(path, body)
             .then(response => {
+                console.log(response)
                 if (response.data.errorCode !== 0) {
                     setError(true)
                     setTimeout(() => {
                         setError(false)
                     }, 1500)
                 } else {
+                    localStorage.setItem('carts', JSON.stringify([]))
                     window.location.href = response.data.payUrl
                 }
             })

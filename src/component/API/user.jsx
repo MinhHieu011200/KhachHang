@@ -25,6 +25,10 @@ const userAPI = {
         const url = `/admin/user/checkOTP${query}`
         return axiosClient.post(url)
     },
+    checkLogin: (data) => {
+        const url = `/admin/user/checkLogin`
+        return axiosClient.post(url, data)
+    }
 
 }
 

@@ -11,7 +11,11 @@ const productAPI = {
         return axiosClient.get(url)
     },
     searchProduct: (query) => {
-        const url = `/product/${query}`
+        const url = `/product/search/${query}`
+        return axiosClient.get(url)
+    },
+    getCategory: (query) => {
+        const url = `/product/category${query}`
         return axiosClient.get(url)
     }
 
