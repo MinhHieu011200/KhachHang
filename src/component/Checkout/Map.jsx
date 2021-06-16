@@ -19,8 +19,6 @@ import {
 import "@reach/combobox/styles.css";
 
 const libraries = ["places"]
-const language = ["en"]
-const region = ["vn"]
 
 const containerStyle = {
     height: '500px', width: '650px'
@@ -50,8 +48,7 @@ function Map({ handleCheckDistance }) {
         const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: "AIzaSyA-68B07fWPLkgCuEge2f8GWu2YFPsQ7BI",
         libraries,
-        language,
-        region,
+            version:"weekly"
     })
 
     const onMapClick = useCallback((event) => {
