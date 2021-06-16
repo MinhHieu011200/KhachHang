@@ -128,7 +128,7 @@ function Header() {
                                                     cartItem && cartItem.map((c, index) => (
                                                         <li key={index}>
                                                             <a className="minicart-product-image">
-                                                                <img src={"http://localhost:8000" + c.image} alt="cart products" />
+                                                                <img src={process.env.REACT_APP_API + c.image} alt="cart products" />
                                                             </a>
                                                             <div className="minicart-product-details">
                                                                 <Link to={"/detail/" + c.id_product}><h6 className="product_name">{c.name_product}</h6></Link>
