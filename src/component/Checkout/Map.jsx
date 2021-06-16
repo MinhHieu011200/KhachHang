@@ -45,10 +45,10 @@ function Map({ handleCheckDistance }) {
     const [loadCheckout, setLoadCheckOut] = useState(false)
     const delaySearchTextTimeOut = useRef(null)
     
-        const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "AIzaSyA-68B07fWPLkgCuEge2f8GWu2YFPsQ7BI",
-        libraries
-    })
+//         const { isLoaded, loadError } = useLoadScript({
+//         googleMapsApiKey: "AIzaSyA-68B07fWPLkgCuEge2f8GWu2YFPsQ7BI",
+//         libraries
+//     })
 
     const onMapClick = useCallback((event) => {
         setFee()
