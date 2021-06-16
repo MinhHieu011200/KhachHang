@@ -64,7 +64,7 @@ function Search(props) {
                                 <ComboboxOption key={value._id} value={value.name_product} onClick={handleClick}>
                                     <NavLink to={"/detail/" + value._id} className="hover_box_search d-flex">
                                         <div style={{ padding: '.8rem' }}>
-                                            <img className="img_list_search" src=src={process.env.REACT_APP_API + value.image} alt="" />
+                                            <img className="img_list_search" src={process.env.REACT_APP_API + value.image} alt="" />
                                         </div>
 
                                         <div className="group_title_search" style={{ marginTop: '2.7rem' }}>
