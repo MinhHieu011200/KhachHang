@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 
 
-import { GoogleMap,useJsApiLoader, Marker, InfoWindow, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap,useLoadScript, Marker, InfoWindow, DirectionsRenderer } from '@react-google-maps/api';
 
 import PlacesAutocomplete, {
     geocodeByAddress,
@@ -45,10 +45,9 @@ function Map({ handleCheckDistance }) {
     const [loadCheckout, setLoadCheckOut] = useState(false)
     const delaySearchTextTimeOut = useRef(null)
     
-        const { isLoaded } = useJsApiLoader({
+        const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: "AIzaSyA-68B07fWPLkgCuEge2f8GWu2YFPsQ7BI",
-        libraries,
-            version:"weekly"
+        libraries
     })
 
     const onMapClick = useCallback((event) => {
@@ -221,7 +220,7 @@ function Map({ handleCheckDistance }) {
         }, 300)
 
     }
-
+    
 
     return (
 
