@@ -152,7 +152,7 @@ function Forget(props) {
 
                                                 <div className="col-md-12">
                                                     {
-                                                        redirect && <Redirect to="/signin" />
+                                                        redirect && <Redirect to="/login" />
                                                     }
                                                     <button type="button" onClick={changePassword} className="register-button mt-0" style={{ cursor: 'pointer' }}>Submit</button>
                                                 </div>
