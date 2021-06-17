@@ -12,6 +12,7 @@ import './CSS/style.css'
 import './CSS/responsive.css'
 import './App.css';
 import React, { lazy, Suspense } from 'react';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
@@ -157,6 +158,7 @@ function App() {
           </BrowserRouter>
         </AuthContextProvider>
       </CartContextProvider>
+<MessengerCustomerChat pageId={process.env.REACT_APP_APP_ID} appId={process.env.REACT_APP_PAGE_ID} themeColor="#0e8170"/>
     </div>
 
   );
