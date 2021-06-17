@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../../IMG/logo.jpg'
 
 function Footer(props) {
     return (
@@ -10,7 +11,7 @@ function Footer(props) {
                             {/* Begin Footer Logo Area */}
                             <div className="col-sm-12 col-lg-6 text-center text-lg-left">
                                 <div className="footer-logo">
-                                    <img src="images/menu/logo/1.jpg" alt="Footer Logo" />
+                                    <img src={Logo} style={{ width: '200px' }} alt="Footer Logo" />
                                     <p className="info">
                                         Mua bán điện thoại
                                     </p>
@@ -68,7 +69,7 @@ function Footer(props) {
             <div className="footer-static-bottom pt-5 pb-5">
                 <div className="copyright text-center">
                     <img src="images/payment/1.png" alt="" />
-                        fdsfds
+                    fdsfds
                 </div>
             </div>
         </div >

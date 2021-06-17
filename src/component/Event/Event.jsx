@@ -59,7 +59,7 @@ function Event(props) {
             {
                 show && (
                     <div className="container" style={{ marginTop: '1rem' }}>
-                        <div className="row d-flex justify-content-center justify-content-lg-round justify-content-xl-between">
+                        <div className="row d-flex justify-content-center justify-content-lg-round justify-content-xl-start">
                             {
                                 coupons && coupons.map(value => (
                                     <div className="col-sm-12 col-lg-4 col-xl-4 animate__animated animate__zoomIn bg_event mt-50" style={{ maxWidth: '350px', marginLeft: '30px' }}>

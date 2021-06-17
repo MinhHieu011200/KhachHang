@@ -146,6 +146,18 @@ function Profile(props) {
                                             <input className="txt_input_edit" type="text" disabled={true} value={email} />
                                         </div>
                                     </div>
+                                    <div className="txt_setting_edit pt-3">
+                                        <div className="d-flex justify-content-center align-items-center">
+                                            <span style={{ fontWeight: '600' }}>Hạng</span>
+                                        </div>
+                                        <div>
+                                            <span style={{ fontWeight: '600' }}>{user.id_rank.rank}</span>
+
+                                        </div>
+                                        <div>
+
+                                        </div>
+                                    </div>
                                     <div className="d-flex justify-content-center pb-4">
                                         <button onClick={handleSubmit} className="register-button">Submit</button>
                                     </div>

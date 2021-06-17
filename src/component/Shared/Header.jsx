@@ -4,6 +4,7 @@ import Search from './Search'
 import producerAPI from '../API/producer'
 import { CartContext } from '../context/CartContext'
 import { AuthContext } from '../context/AuthContext'
+import Logo from '../../IMG/logo.jpg'
 
 function Header() {
     const { cartItem, sumCount, sumPrice, show_success, deleteCart } = useContext(CartContext);
@@ -100,9 +101,9 @@ function Header() {
                         {/* Begin Header Logo Area */}
                         <div className="col-lg-3">
                             <div className="logo pb-sm-30 pb-xs-30">
-                                <a href="index.html">
-                                    <img src="images/menu/logo/1.jpg" alt="" />
-                                </a>
+                                {/* <a href="index.html">
+                                    <img src={Logo} alt="" />
+                                </a> */}
                             </div>
                         </div>
 

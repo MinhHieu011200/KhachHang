@@ -71,6 +71,7 @@ function Checkout(props) {
             return
         }
         const body = {
+            rank: user.id_rank._id,
             id_user: user,
             code: code
         }
@@ -96,6 +97,7 @@ function Checkout(props) {
             setFlag(true)
             if (discount > 0) {
                 const body = {
+                    rank: user.id_rank._id,
                     id_user: user._id,
                     code: code,
                     payment: "6086709cdc52ab1ae999e882"
@@ -132,6 +134,7 @@ function Checkout(props) {
             if (discount > 0) {
                 const body = {
                     id_user: user._id,
+                    rank: user.id_rank._id,
                     code: code,
                     payment: "60afcfcedc48d73138aceaf6"
                 }
@@ -306,13 +309,7 @@ function Checkout(props) {
                                     <div className="payment-accordion">
                                         <div id="accordion">
                                             <div className="card">
-                                                <div className="card-header" id="#payment-3">
-                                                    <h5 className="panel-title">
-                                                        <a className="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                            PayPal
-                                                        </a>
-                                                    </h5>
-                                                </div>
+
                                                 <div className="card-header" id="#payment-3">
                                                     <h5 className="panel-title">
                                                         <a className="collapsed" data-toggle="collapse" data-target="#collapseMoMo" aria-expanded="false" aria-controls="collapseThree">
@@ -329,22 +326,7 @@ function Checkout(props) {
                                                         }
                                                     </div>
                                                 </div >
-                                                {/* <div id="collapseThree" className="collapse">
-                                            <div className="card-body">
-                                                {
-                                                    show_error ? 'Please Checking Information!' :
-                                                        <Paypal
-                                                            information={information}
-                                                            total={total_price}
-                                                            Change_Load_Order={Change_Load_Order}
-                                                            from={from}
-                                                            distance={distance}
-                                                            duration={duration}
-                                                            price={price}
-                                                        />
-                                                }
-                                            </div>
-                                        </div > */}
+
                                             </div >
                                         </div >
                                     </div >
