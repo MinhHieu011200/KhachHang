@@ -13,7 +13,7 @@ function MoMo(props) {
         const serectkey = process.env.REACT_APP_SECRET_KEY
         const orderInfo = "Thanh toán MoMo"
         const notifyurl = process.env.REACT_APP_API + "/api/payment/momo"
-        const returnUrl = "http://localhost:3000/momo"
+        const returnUrl = "https://hieusuper20hcm.netlify.app/momo"
         const amount = props.total.toString()
         const orderId = uuidv4();
         const requestType = "captureMoMoWallet"
