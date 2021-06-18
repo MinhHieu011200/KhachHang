@@ -36,7 +36,7 @@ function Footer(props) {
                                     <h3 className="footer-block-title text-center">Follow Us</h3>
                                     <ul className="social-link d-flex justify-content-center">
                                         <li className="facebook">
-                                            <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                            <a href="https://www.facebook.com/thewingphone" data-toggle="tooltip" target="_blank" title="Facebook">
                                                 <i className="fa fa-facebook" />
                                             </a>
                                         </li>
@@ -46,12 +46,12 @@ function Footer(props) {
                                             </a>
                                         </li>
                                         <li className="instagram">
-                                            <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                            <a href="https://www.instagram.com/minhhieu0112000/" data-toggle="tooltip" target="_blank" title="Instagram">
                                                 <i className="fa fa-instagram" />
                                             </a>
                                         </li>
                                         <li className="github">
-                                            <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="github">
+                                            <a href="https://github.com/minhhieu011200/DoAn1" data-toggle="tooltip" target="_blank" title="github">
                                                 <i className="fa fa-github" />
                                             </a>
                                         </li>
@@ -69,7 +69,7 @@ function Footer(props) {
             <div className="footer-static-bottom pt-5 pb-5">
                 <div className="copyright text-center">
                     <img src="images/payment/1.png" alt="" />
-                    fdsfds
+                    Design by Minh Hiếu
                 </div>
             </div>
         </div >
