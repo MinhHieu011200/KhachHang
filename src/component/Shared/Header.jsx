@@ -101,9 +101,9 @@ function Header() {
                         {/* Begin Header Logo Area */}
                         <div className="col-lg-3">
                             <div className="logo pb-sm-30 pb-xs-30">
-                                {/* <a href="index.html">
-                                    <img src={Logo} alt="" />
-                                </a> */}
+                                <Link to="/">
+                                    <img src={Logo} alt="" width="200px" />
+                                </Link>
                             </div>
                         </div>
 

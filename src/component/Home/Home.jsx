@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import producerAPI from '../API/producer'
 import Slider from './Sliders'
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 function Home(props) {
     const [producer, setProducer] = useState([])

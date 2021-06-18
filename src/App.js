@@ -158,7 +158,7 @@ function App() {
           </BrowserRouter>
         </AuthContextProvider>
       </CartContextProvider>
-<MessengerCustomerChat appId={process.env.REACT_APP_APP_ID} pageId={process.env.REACT_APP_PAGE_ID} themeColor="#0e8170"/>
+      <MessengerCustomerChat appId={process.env.REACT_APP_APP_ID} pageId={process.env.REACT_APP_PAGE_ID} themeColor="#0e8170" />
     </div>
 
   );

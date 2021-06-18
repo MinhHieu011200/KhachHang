@@ -234,7 +234,11 @@ function Checkout(props) {
                                         <div className="col-md-12">
                                             <div className="checkout-form-list">
                                                 <label htmlFor="address">Address:</label>
-                                                <input type="text" className="form-control" id="address" name="address" value={address} disabled />
+                                                <div className="d-flex">
+                                                    <input type="text" className="form-control" id="address" name="address" value={address} disabled />
+                                                    <button type="button" onClick={() => setLoadMap(true)} className="register-button" style={{ cursor: 'pointer', padding: '0px', margin: '0px', height: '43px' }}>Change</button>
+                                                </div>
+
                                                 <p className="form-text text-danger">{validationMsg.address}</p>
                                             </div>
                                         </div>

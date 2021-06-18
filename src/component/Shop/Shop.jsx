@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+
 import queryString from 'query-string'
 import producerAPI from '../API/producer'
 import { NavLink } from 'react-router-dom'
@@ -13,7 +14,8 @@ function Shop(props) {
     const [filter, setFilter] = useState({
         page: '1',
         limit: '6',
-        status: true
+        status: true,
+        sort: ""
     })
 
     const [products, setProducts] = useState([])
@@ -60,6 +62,14 @@ function Shop(props) {
         setCount(Number(value))
     }
 
+    const onChangeSort = (value) => {
+        console.log(value)
+        setFilter({
+            ...filter,
+            sort: value
+        })
+    }
+
     return (
         <div>
             <div className="breadcrumb-area">
@@ -72,6 +82,7 @@ function Shop(props) {
                     </div>
                 </div>
             </div>
+
 
             {
                 show && (
@@ -111,23 +122,21 @@ function Shop(props) {
                                         <div className="product-select-box">
                                             <div className="product-short">
                                                 <p>Sort By:</p>
-                                                <select className="nice-select">
-                                                    <option value="trending">Relevance</option>
-                                                    <option value="sales">Name (A - Z)</option>
-                                                    <option value="sales">Name (Z - A)</option>
-                                                    <option value="rating">Price (Low &gt; High)</option>
-                                                    <option value="date">Rating (Lowest)</option>
-                                                    <option value="price-asc">Model (A - Z)</option>
-                                                    <option value="price-asc">Model (Z - A)</option>
+                                                <select className="nice-select" onChange={(e) => onChangeSort(e.target.value)}>
+                                                    <option value="">Relevance</option>
+                                                    <option value="1">Price (Low &gt; High)</option>
+                                                    <option value="-1">Price (High &gt; Low)</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="shop-products-wrapper">
                                         <div className="tab-content">
-                                            <div id="grid-view" className="tab-pane fade active show" role="tabpanel">
+                                            <div id="grid-view" className="tab-pane active show" role="tabpanel">
                                                 <div className="product-area shop-product-area">
-                                                    <div className="row d-flex justify-content-center justify-content-md-around justify-content-lg-around  justify-content-xl-start">
+
+                                                    <div className="row d-flex justify-content-center justify-content-md-around justify-content-lg-around justify-content-xl-start">
+
                                                         {
                                                             products && products.map((item, index) => (
                                                                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-80" style={{ maxWidth: "360px", minHeight: "450px", maxHeight: "460px" }} key={index}>
@@ -261,14 +270,15 @@ function Shop(props) {
                                                             ))
 
                                                         }
+
                                                     </div>
+
                                                 </div>
                                             </div>
 
                                             <Pagination filter={filter} onPageChange={onPageChange} totalPage={totalPage} />
                                         </div>
                                     </div>
-                                    {/* shop-products-wrapper end */}
                                 </div>
 
                             </div>
