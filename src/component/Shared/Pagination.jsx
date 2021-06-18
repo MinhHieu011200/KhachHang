@@ -26,6 +26,7 @@ function Pagination({ filter, onPageChange, totalPage }) {
                         {
                             indexPage && indexPage.map(value => (
                                 <li className={value === parseInt(page) ? 'page-item active' : 'page-item'}
+                                    style={{ cursor: 'pointer' }}
                                     key={value}
                                     onClick={() => handlePageChange(parseInt(value))}>
 

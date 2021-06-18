@@ -151,7 +151,7 @@ function Profile(props) {
                                             <span style={{ fontWeight: '600' }}>Hạng</span>
                                         </div>
                                         <div>
-                                            <span style={{ fontWeight: '600' }}>{user.id_rank.rank}</span>
+                                            <span style={{ fontWeight: '600' }}>{user.id_rank ? user.id_rank.rank : "Chưa có hạng"}</span>
 
                                         </div>
                                         <div>

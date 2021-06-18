@@ -105,6 +105,27 @@ const CartContextProvider = (props) => {
         }
     }
 
+    const resetCart = async (cart) => {
+        let cartArr = cart.map(e => {
+            return Object.assign({}, {
+                id_cart: Math.random().toString().replace(".", ""),
+                id_product: e.id_product._id,
+                name_product: e.id_product.name_product,
+                price_product: e.id_product.price_product,
+                image: e.id_product.image,
+                count: e.count,
+            });
+        })
+        const response = await orderAPI.checkCart({ cartItem: cartArr })
+        if (response.msg !== "Thanh Cong") {
+            localStorage.setItem('carts', JSON.stringify(response.cart))
+            setSumCount(0)
+            return
+        }
+        localStorage.setItem('carts', JSON.stringify(cartArr))
+        setSumCount(1)
+    }
+
     const deleteCart = (data) => {
         let updateCart = cartItem.filter((item) => {
             return item !== data
@@ -203,7 +224,8 @@ const CartContextProvider = (props) => {
                 setRedirect,
                 check,
                 setCheck,
-                checkCart
+                checkCart,
+                resetCart
             }}>
             {props.children}
         </CartContext.Provider>

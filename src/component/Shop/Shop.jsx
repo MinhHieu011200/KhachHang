@@ -138,7 +138,7 @@ function Shop(props) {
                                                     <div className="row d-flex justify-content-center justify-content-md-around justify-content-lg-around justify-content-xl-start">
 
                                                         {
-                                                            products && products.map((item, index) => (
+                                                            products && products.length > 0 ? products.map((item, index) => (
                                                                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-80" style={{ maxWidth: "360px", minHeight: "450px", maxHeight: "460px" }} key={index}>
                                                                     <div className="single-product-wrap">
                                                                         <div className="product-image">
@@ -267,7 +267,10 @@ function Shop(props) {
                                                                     </div>
 
                                                                 </div>
-                                                            ))
+                                                            )) : (
+
+                                                                <h3 className="mx-auto mt-3">Không có sản phẩm nào</h3>
+                                                            )
 
                                                         }
 

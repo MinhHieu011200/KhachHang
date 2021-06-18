@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import crypto from 'crypto'
 import { v4 as uuidv4 } from 'uuid';
 import { Link, useParams } from 'react-router-dom';
 import './History.css'
 import OrderAPI from '../API/order';
+import { CartContext } from '../context/CartContext'
 import Detail_OrderAPI from '../API/detailOrder';
 import queryString from 'query-string'
 
 
 function DetailHistory(props) {
-
     const { id } = useParams()
-
+    const { resetCart } = useContext(CartContext);
 
     const [order, set_order] = useState({})
 
@@ -118,13 +118,18 @@ function DetailHistory(props) {
 
                     <li style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>Phương thức thanh toán: <span style={{ fontWeight: 'lighter', color: 'black' }}>{order.id_payment && order.id_payment.pay_name}</span></li>
                     <li style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>Tình trạng thanh toán: <span style={{ fontWeight: 'lighter', color: 'black' }}>{order.pay ? 'Đã thanh toán' : 'Chưa thanh toán'}</span></li>
-                    {
-                        order.status === "5" && order.id_momo && !order.id_momo.refund && (
-                            <li>
-                                <button className="btn btn-success mt-3" onClick={handleRefund}>Hoàn tiền lại</button>
-                            </li>
-                        )
-                    }
+
+                    <div className="d-flex">
+                        <li>
+                            <button className="btn btn-primary mt-3" onClick={() => resetCart(detail_order)}>Đặt lại</button>
+                            {
+                                order.status === "5" && order.id_momo && !order.id_momo.refund && (
+                                    <button className="btn btn-success mt-3" onClick={handleRefund}>Hoàn tiền lại</button>
+                                )
+                            }
+                        </li>
+                    </div>
+
 
                 </ul>
                 <div className="group_box_status" style={{ marginTop: '3rem' }}>

@@ -60,7 +60,7 @@ function Search(props) {
                 <ComboboxPopover>
                     <ComboboxList className="show-search">
                         {
-                            product && !show && product.map(value => (
+                            product && !show && product.length > 0 ? product.map(value => (
                                 <ComboboxOption key={value._id} value={value.name_product} onClick={handleClick}>
                                     <NavLink to={"/detail/" + value._id} className="hover_box_search d-flex">
                                         <div style={{ padding: '.8rem' }}>
@@ -74,7 +74,9 @@ function Search(props) {
 
                                     </NavLink>
                                 </ComboboxOption>
-                            ))
+                            )) : (
+                                <h4 className="text-center">Không có sản phẩm nào</h4>
+                            )
                         }
                     </ComboboxList>
                 </ComboboxPopover>
