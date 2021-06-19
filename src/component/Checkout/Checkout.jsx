@@ -40,7 +40,7 @@ function Checkout(props) {
         if (cartItem.length < 1 || !user) {
             props.history.push('/cart')
         }
-    })
+    }, [])
 
 
     const [validationMsg, setValidationMsg] = useState('');
