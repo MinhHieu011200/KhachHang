@@ -36,6 +36,12 @@ function Checkout(props) {
 
     }, [sumPrice, price, coupon])
 
+    useEffect(() => {
+        if (cartItem.length < 1 || !user) {
+            props.history.push('/cart')
+        }
+    })
+
 
     const [validationMsg, setValidationMsg] = useState('');
     const { handleSubmit } = useForm();
@@ -183,12 +189,7 @@ function Checkout(props) {
         setLoadMap(false)
     }
 
-    if (cartItem.length < 1) {
-        props.history.push('/cart')
-    }
-    else if (!user) {
-        props.history.push('/login')
-    }
+
 
     return (
 
