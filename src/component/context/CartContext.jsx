@@ -119,7 +119,7 @@ const CartContextProvider = (props) => {
         const response = await orderAPI.checkCart({ cartItem: cartArr })
         if (response.msg !== "Thanh Cong") {
             localStorage.setItem('carts', JSON.stringify(response.cart))
-            setSumCount(0)
+            setSumCount(1)
             return
         }
         localStorage.setItem('carts', JSON.stringify(cartArr))
