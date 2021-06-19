@@ -30,15 +30,6 @@ function Checkout(props) {
     const [discount, setDiscount] = useState(0)
     const [loadMap, setLoadMap] = useState(true)
 
-    useEffect(() => {
-
-        if (cartItem.length < 1 || !user) {
-            props.history.push('/cart')
-        }
-
-
-    }, [])
-
     useEffect(async () => {
         setTotal(sumPrice + Number(price) - (((sumPrice * Number(coupon)) / 100)))
         setDiscount((sumPrice * Number(coupon)) / 100)
@@ -190,6 +181,13 @@ function Checkout(props) {
         setAddress(address)
         setPrice(price)
         setLoadMap(false)
+    }
+
+    if (cartItem.length < 1) {
+        props.history.push('/cart')
+    }
+    else if (!user) {
+        props.history.push('/login')
     }
 
     return (
