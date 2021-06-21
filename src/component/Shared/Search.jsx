@@ -30,7 +30,6 @@ function Search(props) {
         delaySearchTextTimeOut.current = setTimeout(async () => {
             const query = '?' + queryString.stringify({ search: search })
             const response = await productAPI.searchProduct(query)
-            console.log(response)
             setProduct(response)
         }, 300)
 
@@ -69,7 +68,21 @@ function Search(props) {
 
                                         <div className="group_title_search" style={{ marginTop: '2.7rem' }}>
                                             <h6 className="product_name">{value.name_product}</h6>
-                                            <span style={{ color: 'red' }}>{new Intl.NumberFormat('vi-VN', { style: 'decimal', decimal: 'VND' }).format(value.price_product) + ' VNĐ'}</span>
+                                            {
+                                                value.id_sale && value.id_sale.status ?
+                                                    (
+                                                        <div>
+                                                            <del className="new-price">{new Intl.NumberFormat('vi-VN', { style: 'decimal', decimal: 'VND' }).format(value.price_product) + ' VNĐ'}</del>
+                                                            <div className="new-price mt-2" style={{ color: 'red' }}>
+                                                                {new Intl.NumberFormat('vi-VN', { style: 'decimal', decimal: 'VND' }).format(Number(value.price_product) * (100 - Number(value.id_sale.promotion)) / 100) + ' VNĐ'}
+                                                            </div>
+                                                        </div>
+                                                    ) : (
+                                                        <span style={{ color: 'red' }}>{new Intl.NumberFormat('vi-VN', { style: 'decimal', decimal: 'VND' }).format(value.price_product) + ' VNĐ'}</span>
+                                                    )
+
+                                            }
+
                                         </div>
 
                                     </NavLink>

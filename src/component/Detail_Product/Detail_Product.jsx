@@ -68,7 +68,6 @@ function Detail_Product(props) {
     }
 
     const handleComment = async () => {
-        console.log(user)
         if (!user) { // Khi khách hàng chưa đăng nhập
             set_error_comment(true)
             setTimeout(() => {
@@ -235,9 +234,9 @@ function Detail_Product(props) {
                                                                     comments.map((value, key) => (
                                                                         <div className="comment-author-infos pt-15">
                                                                             <div className="d-flex justify-content-between comment-header">
-                                                                                <span>{value.id_user.username}</span>
+                                                                                <span>{value.id_user && value.id_user.username}</span>
                                                                                 {
-                                                                                    user && (user._id === value.id_user._id || user.id_permission.permission === "Nhân Viên") &&
+                                                                                    user && value.id_user && (user._id === value.id_user._id || user.id_permission.permission === "Nhân Viên") &&
                                                                                     <div className="dropdown mr-3">
                                                                                         <p className="dropdown-toggle" data-toggle="dropdown"></p>
                                                                                         <ul className="dropdown-menu comment-menu">

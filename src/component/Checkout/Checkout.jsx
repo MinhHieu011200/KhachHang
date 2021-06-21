@@ -19,7 +19,7 @@ function Checkout(props) {
     const [address, setAddress] = useState('')
     const [fullname, setFullname] = useState('')
     const [phone, setPhone] = useState('')
-    const [price, setPrice] = useState()
+    const [price, setPrice] = useState(15000)
     const [coupon, setCoupon] = useState(0)
     const [code, setCode] = useState('')
     const [show_error, set_show_error] = useState(false)
@@ -48,11 +48,14 @@ function Checkout(props) {
 
     const validateAll = () => {
         let msg = {}
+        const phongeRegex = /^0(?=.+[0-9]).{9}$/
         if (isEmpty(fullname)) {
             msg.fullname = "Tên không được để trống"
         }
         if (isEmpty(phone)) {
             msg.phone = "Số điện thoại không được để trống"
+        } else if (phongeRegex.test(phone) === false) {
+            msg.phone = 'Số điện thoại sai định dạng'
         }
         if (isEmpty(address)) {
             msg.address = "Địa chỉ không được để trống"

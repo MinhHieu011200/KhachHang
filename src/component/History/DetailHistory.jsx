@@ -190,8 +190,25 @@ function DetailHistory(props) {
                                             {
                                                 detail_order && detail_order.map(value => (
                                                     <tr key={value._id}>
-                                                        <td className="li-product-thumbnail"><img src={process.env.REACT_APP_API + value.id_product.image} style={{ width: '5rem' }} alt="Li's Product Image" /></td>
-                                                        <td className="li-product-name"><Link to={"/detail/" + value.id_product._id}>{value.name_product}</Link></td>
+                                                        <td className="li-product-thumbnail">
+                                                            {
+                                                                value.id_product ? (
+                                                                    <img src={process.env.REACT_APP_API + value.id_product.image} style={{ width: '5rem' }} alt="Li's Product Image" />
+                                                                ) : (
+                                                                    <img src="" style={{ width: '5rem' }} alt="Li's Product Image" />
+                                                                )
+                                                            }
+                                                        </td>
+                                                        <td className="li-product-name">
+                                                            {
+                                                                value.id_product ? (
+                                                                    <Link to={"/detail/" + value.id_product._id}>{value.name_product}</Link>
+                                                                ) : (
+                                                                    <Link to="">{value.name_product}</Link>
+                                                                )
+                                                            }
+
+                                                        </td>
                                                         <td className="li-product-price"><span className="amount">{new Intl.NumberFormat('vi-VN', { style: 'decimal', decimal: 'VND' }).format(value.price_product) + ' VNĐ'}</span></td>
                                                         <td className="li-product-price"><span className="amount">{value.count}</span></td>
                                                         <td className="li-product-price"><span className="amount">{new Intl.NumberFormat('vi-VN', { style: 'decimal', decimal: 'VND' }).format(Number(value.price_product) * value.count) + ' VNĐ'}</span></td>
