@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 
 
-import { GoogleMap,useLoadScript, Marker, InfoWindow, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker, InfoWindow, DirectionsRenderer } from '@react-google-maps/api';
 
 import PlacesAutocomplete, {
     geocodeByAddress,
@@ -44,11 +44,11 @@ function Map({ handleCheckDistance }) {
     const [fee, setFee] = useState()
     const [loadCheckout, setLoadCheckOut] = useState(false)
     const delaySearchTextTimeOut = useRef(null)
-    
-//         const { isLoaded, loadError } = useLoadScript({
-//         googleMapsApiKey: "AIzaSyA-68B07fWPLkgCuEge2f8GWu2YFPsQ7BI",
-//         libraries
-//     })
+
+    //         const { isLoaded, loadError } = useLoadScript({
+    //         googleMapsApiKey: "AIzaSyA-68B07fWPLkgCuEge2f8GWu2YFPsQ7BI",
+    //         libraries
+    //     })
 
     const onMapClick = useCallback((event) => {
         setFee()
@@ -187,7 +187,7 @@ function Map({ handleCheckDistance }) {
 
                                 setKiLo(distance_in_kilo)
                                 setFee(20000)
-                            } else if (distance_in_kilo > 50) {
+                            } else if (distance_in_kilo > 40) {
                                 setKiLo(distance_in_kilo)
                                 setFee(30000)
                             }
@@ -220,7 +220,7 @@ function Map({ handleCheckDistance }) {
         }, 300)
 
     }
-    
+
 
     return (
 
@@ -262,7 +262,7 @@ function Map({ handleCheckDistance }) {
                                         <div id="result" className="hide">
                                             <div>
                                                 <label htmlFor="Kilometers">Kilometers: </label>&nbsp;
-                                                <label id="in_kilo">{kilo}</label>
+                                                <label id="in_kilo">{kilo}km</label>
                                             </div>
                                             <div>
                                                 <label htmlFor="Price">Shipping: </label>&nbsp;
