@@ -4,7 +4,7 @@ import Search from './Search'
 import producerAPI from '../API/producer'
 import { CartContext } from '../context/CartContext'
 import { AuthContext } from '../context/AuthContext'
-import Logo from '../../IMG/logo.jpg'
+import Logo from '../../IMG/logoheader.jpg'
 
 function Header() {
     const { cartItem, sumCount, sumPrice, show_success, deleteCart } = useContext(CartContext);
